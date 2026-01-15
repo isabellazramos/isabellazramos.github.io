@@ -8,203 +8,292 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">IR</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#curriculo">Currículo</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
+            <div class="nav-logo">IR</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#experience" class="nav-link">Experiência</a></li>
+                <li><a href="#projects" class="nav-link">Projetos</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="avatar-container">
-            <div class="avatar">
-                <img src="assets/img/avatar.jpg" alt="Isabella Ramos">
-            </div>
-        </div>
+    <section id="home" class="hero">
         <div class="hero-content">
+            <div class="avatar">
+                👩‍💻
+            </div>
             <h1>Isabella Ramos</h1>
-            <p>Engenheira de Dados</p>
-            <p>Especialista em pipelines escaláveis, dbt, Apache Airflow e transformação de dados em larga escala.</p>
-            <div class="hero-cta">
-                <a href="#sobre" class="btn btn-primary">Sobre Mim</a>
-                <a href="https://github.com/isabellazramos" class="btn btn-secondary">GitHub</a>
+            <p class="hero-subtitle">Engenheira de Dados</p>
+            <p class="hero-description">
+                Especialista em pipelines escaláveis, dbt, Apache Airflow e transformação de dados em larga escala.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Sobre Mim</button>
+                <a href="https://github.com/isabellaramos" target="_blank" class="btn btn-secondary">GitHub</a>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- About Section -->
-        <section class="about" id="curriculo">
-            <h2>Sobre</h2>
-            <p>Engenheira de Dados com sólida formação em Ciência da Computação pela UFV e experiência no ciclo completo de desenvolvimento e sustentação de soluções de dados em ambientes Cloud GCP.</p>
-            <p>Especialista na construção de pipelines escaláveis, modelagem de dados com dbt e orquestração de fluxos com Apache Airflow. Transformo dados brutos em ativos estratégicos para análise e BI.</p>
-            <p>Tenho atuado nos setores varejista e governamental, sempre focando em qualidade de dados, performance e best practices de engenharia de software.</p>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experiencia">
-            <h2>Experiência</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Engenheira de Dados Jr.</h3>
-                        <p class="role">NIU Stefanini • São Paulo, SP</p>
-                        <p class="date">Jan 2024 - Presente</p>
-                        <p class="description">Responsável pela migração e coleta de dados de APIs externas, datasets públicos e fontes internas. Desenvolvimento de transformações ELT com dbt e SQL, com foco em qualidade dos dados para consumo em BI dashboards.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Engenheira de Dados Jr.</h3>
-                        <p class="role">ammo.varejo • São Paulo, SP</p>
-                        <p class="date">Jun 2022 - Dez 2023</p>
-                        <p class="description">Participação ativa em migração e coleta de dados de APIs externas. Auxílio na expansão e transformação de dados utilizando dbt. Suporte em orquestração e deploy de soluções em ambiente cloud GCP.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Desenvolvedora de Software</h3>
-                        <p class="role">Tribunal de Contas da União • Brasília, DF</p>
-                        <p class="date">Jul 2021 - Abr 2022</p>
-                        <p class="description">Desenvolvimento de sistemas em Oracle APEX. Modelagem de bancos de dados, levantamento de requisitos e implementação de sistemas.</p>
-                    </div>
-                </div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <p>
+                    Engenheira de Dados com sólida formação em Ciência da Computação pela UFV e experiência no ciclo completo de desenvolvimento e sustentação de soluções de dados em ambientes Cloud GCP.
+                </p>
+                <p>
+                    Especialista na construção de pipelines escaláveis, modelagem de dados com dbt e orquestração de fluxos com Apache Airflow. Foco na transformação de dados brutos em ativos estratégicos para análise e BI.
+                </p>
+                <p>
+                    Histórico de atuação nos setores varejista e governamental, com experiência em migração de dados, APIs externas, datasets públicos e otimização de consultas em BigQuery.
+                </p>
             </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
+            <h3 class="skills-title">Skills Técnicas</h3>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Linguagens</h4>
-                    <p>Python, SQL, R</p>
+                <div class="skill-card">
+                    <span class="skill-icon">🗄️</span>
+                    <h4>Bancos de Dados</h4>
+                    <p>BigQuery, PostgreSQL, MySQL, SQL Server</p>
                 </div>
-                <div class="skill-category">
+                <div class="skill-card">
+                    <span class="skill-icon">🔄</span>
                     <h4>Orquestração</h4>
-                    <p>Apache Airflow, dbt, Spark, LangChain</p>
+                    <p>Apache Airflow, dbt, Spark, ELT/ETL</p>
                 </div>
-                <div class="skill-category">
-                    <h4>Cloud & BD</h4>
-                    <p>GCP, BigQuery, PostgreSQL, MySQL</p>
+                <div class="skill-card">
+                    <span class="skill-icon">🐍</span>
+                    <h4>Programação</h4>
+                    <p>Python, SQL, PySpark, R, Pandas</p>
                 </div>
-                <div class="skill-category">
-                    <h4>Ferramentas</h4>
-                    <p>Git, Linux, Flask, Docker</p>
+                <div class="skill-card">
+                    <span class="skill-icon">☁️</span>
+                    <h4>Cloud & DevOps</h4>
+                    <p>Google Cloud Platform, Docker, Git, Linux</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projetos">
-            <h2>Projetos</h2>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <div class="project-image">📊</div>
-                    <div class="project-content">
-                        <h3>Pipeline ETL Escalável com dbt</h3>
-                        <p>Transformação de dados em larga escala utilizando dbt, Apache Airflow e BigQuery. 2.5M registros processados diariamente com 99.9% uptime e 40% redução de custos.</p>
-                        <div class="project-tags">
-                            <span class="tag">dbt</span>
-                            <span class="tag">BigQuery</span>
-                            <span class="tag">Apache Airflow</span>
-                            <span class="tag">SQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" onclick="openProject('pipeline-etl'); return false;">→ Detalhes</a>
-                            <a href="https://github.com/isabellazramos">→ GitHub</a>
-                        </div>
-                    </div>
+                <div class="skill-card">
+                    <span class="skill-icon">📊</span>
+                    <h4>BI & Analytics</h4>
+                    <p>Data Warehouse, Data Lake, Visualização</p>
                 </div>
-
-                <div class="project-item">
-                    <div class="project-image">🔄</div>
-                    <div class="project-content">
-                        <h3>Integração com APIs Externas</h3>
-                        <p>Sistema robusto de ingestão de dados de múltiplas APIs com tratamento de erros, retry logic e validação de dados. Suporte a datasets públicos IBGE.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">APIs REST</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">GCP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" onclick="openProject('apis-externas'); return false;">→ Detalhes</a>
-                            <a href="https://github.com/isabellazramos">→ GitHub</a>
-                        </div>
-                    </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🤖</span>
+                    <h4>IA & ML</h4>
+                    <p>LangChain, ChatGPT APIs, Machine Learning</p>
                 </div>
-
-                <div class="project-item">
-                    <div class="project-image">📈</div>
-                    <div class="project-content">
-                        <h3>Data Warehouse com Modelagem Dimensional</h3>
-                        <p>Arquitetura de data warehouse com Star Schema, otimizado para queries analíticas. Implementação em PostgreSQL e BigQuery com best practices.</p>
-                        <div class="project-tags">
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">BigQuery</span>
-                            <span class="tag">Modelagem</span>
-                            <span class="tag">dbt</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" onclick="openProject('data-warehouse'); return false;">→ Detalhes</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-image">🗄️</div>
-                    <div class="project-content">
-                        <h3>Orquestração com Apache Airflow</h3>
-                        <p>DAGs complexas para orquestração de pipelines com monitoramento, alertas e retry logic. Implementação de padrões production-ready.</p>
-                        <div class="project-tags">
-                            <span class="tag">Apache Airflow</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Monitoring</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" onclick="openProject('airflow'); return false;">→ Detalhes</a>
-                            <a href="https://github.com/isabellazramos">→ GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Detail Modal -->
-        <div id="projectModal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeProject()">✕</button>
-                <div id="projectDetail"></div>
             </div>
         </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="contact" id="contato">
-            <h2>Contato</h2>
-            <p>Estou aberta a novas oportunidades, projetos e colaborações. Entre em contato!</p>
-            <div class="contact-links">
-                <a href="mailto:isabellamenezesramos@outlook.com">Email</a>
-                <a href="https://linkedin.com/in/isabella-ramos/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/isabellazramos" target="_blank">GitHub</a>
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-light">
+        <div class="container">
+            <h2>Experiência Profissional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Engenheira de Dados Jr.</h4>
+                        <p class="timeline-company">NIU Stefanini</p>
+                        <p class="timeline-location">São Paulo, SP</p>
+                        <p class="timeline-date">Jan 2024 - Presente</p>
+                        <ul>
+                            <li>Responsável pela migração e coleta de novas fontes de dados, incluindo APIs externas, datasets públicos e fontes internas SQL Server e PostgreSQL</li>
+                            <li>Atuação na manutenção e expansão do Data Lake, garantindo o armazenamento eficiente e a integridade dos dados na nuvem GCP</li>
+                            <li>Desenvolvimento de transformações de dados ELT utilizando dbt e SQL, otimizando a qualidade dos dados para consumo em BI dashboards</li>
+                            <li>Gerenciamento e garantia da execução de jobs de dados críticos, efetuando o deploy das soluções na nuvem</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Engenheira de Dados Jr. (Promoção de Estagiária)</h4>
+                        <p class="timeline-company">ammo.varejo</p>
+                        <p class="timeline-location">São Paulo, SP</p>
+                        <p class="timeline-date">Jun 2022 - Dez 2023</p>
+                        <ul>
+                            <li>Participação ativa na migração e coleta de dados de APIs externas e DBs internos, com foco em projetos do setor varejista</li>
+                            <li>Auxílio na expansão e transformação de dados utilizando dbt</li>
+                            <li>Suporte na orquestração e deploy de soluções em ambiente de nuvem</li>
+                            <li>Desenvolvimento de pipelines de dados para análise de comportamento de consumidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Desenvolvedora de Software</h4>
+                        <p class="timeline-company">Tribunal de Contas da União</p>
+                        <p class="timeline-location">Brasília, DF</p>
+                        <p class="timeline-date">Jul 2021 - Abr 2022</p>
+                        <ul>
+                            <li>Desenvolvimento de sistemas em ambiente Oracle Application Express</li>
+                            <li>Modelagem de bancos de dados, levantamento de requisitos e implementação de sistemas</li>
+                            <li>Atividades abrangentes de análise e design de soluções</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Iniciação Científica Voluntária</h4>
+                        <p class="timeline-company">Universidade Federal de Viçosa - Campus Florestal</p>
+                        <p class="timeline-location">Florestal, MG</p>
+                        <p class="timeline-date">Mar 2020 - Dez 2021</p>
+                        <ul>
+                            <li>Estudo da linguagem de programação R com uso do RStudio</li>
+                            <li>Análise de dados do Leiden Ranking via software R</li>
+                            <li>Criação de visualizações gráficas e estatísticas descritivas</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Isabella Ramos</p>
-    </footer>
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2>Formação Acadêmica</h2>
+            <div class="education-card">
+                <h3>🎓 Bacharelado em Ciência da Computação</h3>
+                <p class="edu-university">Universidade Federal de Viçosa - Campus Florestal</p>
+                <p class="edu-date">Mar 2018 - Dez 2023</p>
+                <p class="edu-description">Áreas de Pesquisa: Análise de dados em larga escala, treinamento de modelos em Machine Learning e desenvolvimento de aplicações.</p>
+                <p class="edu-description">Experiência em Iniciação Científica CNPq e FUNARBE, utilizando Python e R para pesquisa e análise de dados.</p>
+            </div>
+
+            <h3 class="skills-title">Certificações</h3>
+            <div class="certifications-list">
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Cleaning Data with PySpark</p>
+                        <p class="cert-provider">DataCamp - Dez 2025</p>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Big Data Fundamentals with PySpark</p>
+                        <p class="cert-provider">DataCamp - Jul 2025</p>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Formação Apache Airflow</p>
+                        <p class="cert-provider">Alura - Mar 2025</p>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Formação LangChain - Orquestrando Aplicações de IA Generativa</p>
+                        <p class="cert-provider">Alura - Nov 2024</p>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Build a Data Warehouse with BigQuery</p>
+                        <p class="cert-provider">Google Cloud - Mai 2024</p>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">✓</span>
+                    <div>
+                        <p class="cert-name">Scripting with Python and SQL for Data Engineering</p>
+                        <p class="cert-provider">Coursera - Fev 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-light">
+        <div class="container">
+            <h2>Projetos Destacados</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openProject('dbt-pipeline')">
+                    <div class="project-icon">📦</div>
+                    <h4>Pipeline dbt Avançado</h4>
+                    <p>Arquitetura escalável com modelos incrementais e macros customizadas</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+                <div class="project-card" onclick="openProject('bigquery-optimization')">
+                    <div class="project-icon">⚡</div>
+                    <h4>Otimização BigQuery</h4>
+                    <p>Redução de 60% em custos através de query optimization e particionamento</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+                <div class="project-card" onclick="openProject('api-integration')">
+                    <div class="project-icon">🔗</div>
+                    <h4>Integração de APIs</h4>
+                    <p>Orquestração de múltiplas APIs com tratamento robusto de erros</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+                <div class="project-card" onclick="openProject('spark-analysis')">
+                    <div class="project-icon">🔥</div>
+                    <h4>Análise com Spark</h4>
+                    <p>Processamento distribuído de dados em larga escala com PySpark</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+                <div class="project-card" onclick="openProject('ibge-data')">
+                    <div class="project-icon">📈</div>
+                    <h4>Dados Públicos IBGE</h4>
+                    <p>Pipeline de ingestão e transformação de dados públicos brasileiros</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+                <div class="project-card" onclick="openProject('health-data')">
+                    <div class="project-icon">🏥</div>
+                    <h4>Sistema de Saúde Pública</h4>
+                    <p>Análise de dados de saúde pública com foco em PNPS e PNH</p>
+                    <span class="project-click">Clique para detalhes →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-content">
+                <p>Estou disponível para oportunidades, parcerias e conversas sobre dados!</p>
+                <div class="contact-links">
+                    <a href="https://github.com/isabellaramos" target="_blank" class="contact-link">
+                        <span class="contact-icon">🐙</span> GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/isabellaramos" target="_blank" class="contact-link">
+                        <span class="contact-icon">💼</span> LinkedIn
+                    </a>
+                    <a href="mailto:isabella@email.com" class="contact-link">
+                        <span class="contact-icon">✉️</span> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Project Details -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProject()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <script src="assets/js/script.js"></script>
 </body>
