@@ -737,6 +737,8 @@ select.form-control {
     format('woff2');
 }
 
+/* END PERPLEXITY DESIGN SYSTEM */
+```css
 * {
     margin: 0;
     padding: 0;
@@ -1700,3 +1702,4 @@ h1 {
         font-size: var(--font-size-sm);
     }
 }
+```
