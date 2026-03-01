@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Ramos | Engenheira de Dados</title>
+    <meta name="description" content="Portfólio de Isabella Ramos - Engenheira de Dados especializada em pipelines escaláveis, dbt, Apache Airflow e BigQuery">
+    
+    <!-- React & Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#10b981',
+                        'primary-dark': '#059669',
+                        'secondary': '#14b8a6',
+                        'accent': '#06b6d4',
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <!-- Estilos customizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-zinc-950 text-gray-100">
+    <div id="root"></div>
+
+    <!-- Constantes e Dados (JavaScript puro) -->
+    <script src="js/constants.js"></script>
+    <script src="js/data/projects.js"></script>
+    <script src="js/data/certifications.js"></script>
+    <script src="js/data/skills.js"></script>
+    <script src="js/data/experiences.js"></script>
+
+    <!-- Script principal com todo o código React -->
+    <script type="text/babel">
+        const { useState, useEffect, Fragment } = React;
+
+        // ==================== LOAD MODULES ====================
+        
+        async function loadAllModules() {
+            const modules = [
+                'js/components/Header.js',
+                'js/components/Footer.js',
+                'js/sections/Hero.js',
+                'js/sections/About.js',
+                'js/sections/Skills.js',
+                'js/sections/Experience.js',
+                'js/sections/Certifications.js',
+                'js/sections/Contact.js',
+                'js/pages/HomePage.js',
+                'js/pages/ProjectsPage.js',
+                'js/pages/ProjectDetail.js'
+            ];
+
+            const loadedCode = await Promise.all(
+                modules.map(url => fetch(url).then(r => r.text()))
+            );
+
+            // Concatenar e executar todo o código
+            const fullCode = loadedCode.join('\n\n');
+            eval(fullCode);
+
+            // App Component
+            function App() {
+                const [currentPage, setCurrentPage] = useState(PAGES.HOME);
+                const [selectedProject, setSelectedProject] = useState(null);
+
+                const renderPage = () => {
+                    switch (currentPage) {
+                        case PAGES.HOME:
+                            return React.createElement(HomePage);
+                        case PAGES.PROJECTS:
+                            return React.createElement(ProjectsPage, { 
+                                setCurrentPage, 
+                                setSelectedProject 
+                            });
+                        case PAGES.PROJECT_DETAIL:
+                            return selectedProject ? React.createElement(ProjectDetail, { project: selectedProject }) : null;
+                        default:
+                            return null;
+                    }
+                };
+
+                return React.createElement('div', { className: 'min-h-screen bg-zinc-950' },
+                    React.createElement(Header, { currentPage, setCurrentPage }),
+                    renderPage(),
+                    React.createElement(Footer)
+                );
+            }
+
+            // Renderizar
+            ReactDOM.render(
+                React.createElement(App),
+                document.getElementById('root')
+            );
+        }
+
+        // Inicializar quando DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadAllModules);
+        } else {
+            loadAllModules();
+        }
+    </script>
+</body>
+</html>
