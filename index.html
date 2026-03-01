@@ -1,30 +1,865 @@
-<!doctype html>
-<html lang="pt-BR" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Isabella Ramos | Data Engineer</title>
-    <meta name="description" content="Portfólio de Isabella Menezes Ramos - Engenheira de Dados especializada em Python, SQL, Apache Airflow, dbt, Spark e soluções em GCP/BigQuery." />
-    <meta name="author" content="Isabella Menezes Ramos" />
-    <meta name="keywords" content="Data Engineer, Engenheira de Dados, Python, SQL, Apache Airflow, dbt, Spark, GCP, BigQuery, ETL" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Ramos | Engenheira de Dados</title>
+    <meta name="description" content="Portfólio de Isabella Ramos - Engenheira de Dados especializada em pipelines escaláveis, dbt, Apache Airflow e BigQuery">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        /* Força dark mode em todo documento */
+        html {
+            background-color: #09090b;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #09090b;
+            color: #f4f4f5;
+            margin: 0;
+            padding: 0;
+        }
 
-    <meta property="og:title" content="Isabella Ramos | Data Engineer" />
-    <meta property="og:description" content="Portfólio profissional de Isabella Menezes Ramos - Engenheira de Dados com expertise em pipelines de dados, orquestração e cloud." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/62624785" />
+        * {
+            font-family: 'Inter', sans-serif;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Isabella Ramos | Data Engineer" />
-    <meta name="twitter:description" content="Portfólio profissional de Isabella Menezes Ramos - Engenheira de Dados" />
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/62624785" />
+        #root {
+            background-color: #09090b;
+            min-height: 100vh;
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  </head>
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
 
-  <body>
+        @keyframes gradient-shift {
+            0%, 100% {
+                background: linear-gradient(135deg, #10b981, #14b8a6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            50% {
+                background: linear-gradient(135deg, #14b8a6, #06b6d4);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.15);
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glow-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-gray-100">
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Configuração Tailwind para cores teal/green
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#10b981',
+                        'primary-dark': '#059669',
+                        'secondary': '#14b8a6',
+                        'accent': '#06b6d4',
+                    }
+                }
+            }
+        }
+
+        // Dados dos projetos
+        const projectsData = [
+            {
+                id: 'dbt-architecture',
+                title: '🏗️ Arquitetura dbt com Modelos Incrementais',
+                shortDesc: 'Arquitetura escalável com modelos incrementais e macros customizadas. Implementação de best practices para transformação de dados em larga escala.',
+                tags: ['dbt', 'BigQuery', 'SQL'],
+                fullDescription: 'Projeto completo de arquitetura de dados usando dbt (data build tool) para transformação de dados em larga escala no BigQuery.',
+                challenges: [
+                    'Implementação de modelos incrementais para processar apenas dados novos',
+                    'Criação de macros customizadas para validação e qualidade de dados',
+                    'Otimização de performance em queries complexas'
+                ],
+                solutions: [
+                    'Arquitetura em camadas (bronze/silver/gold)',
+                    'Testes automatizados de dados',
+                    'Documentação gerada automaticamente',
+                    'CI/CD com GitHub Actions'
+                ],
+                results: [
+                    'Redução de 70% no tempo de processamento',
+                    'Melhoria na qualidade dos dados com testes automatizados',
+                    'Documentação sempre atualizada',
+                    'Deploy automatizado'
+                ],
+                github: 'https://github.com/isabellazramos',
+                tech: ['dbt', 'BigQuery', 'SQL', 'Jinja2', 'GitHub Actions', 'Python']
+            },
+            {
+                id: 'bigquery-optimization',
+                title: '💰 Otimização de Custos BigQuery',
+                shortDesc: 'Redução de 60% em custos através de query optimization, particionamento e clustering. Análise de performance e implementação de melhores práticas.',
+                tags: ['BigQuery', 'SQL', 'Otimização'],
+                fullDescription: 'Projeto focado em otimização de custos e performance no Google BigQuery através de técnicas avançadas de query optimization.',
+                challenges: [
+                    'Custos elevados de processamento no BigQuery',
+                    'Queries lentas afetando dashboards',
+                    'Tabelas não otimizadas sem particionamento'
+                ],
+                solutions: [
+                    'Implementação de particionamento por data',
+                    'Clustering em colunas mais consultadas',
+                    'Reescrita de queries complexas',
+                    'Análise de Query Execution Plan'
+                ],
+                results: [
+                    'Redução de 60% nos custos mensais',
+                    'Melhoria de 80% na performance das queries',
+                    'Economia de R$ 15.000/mês',
+                    'SLAs de dashboards sempre cumpridos'
+                ],
+                github: 'https://github.com/isabellazramos',
+                tech: ['BigQuery', 'SQL', 'GCP', 'Performance Tuning']
+            },
+            {
+                id: 'airflow-pipeline',
+                title: '🔄 Pipeline Airflow Multi-API',
+                shortDesc: 'Orquestração de múltiplas APIs com tratamento robusto de erros, retry policies e monitoramento. Pipeline de dados complexo com SLAs definidos.',
+                tags: ['Apache Airflow', 'Python', 'APIs'],
+                fullDescription: 'Pipeline de dados robusto usando Apache Airflow para orquestrar a ingestão de dados de múltiplas APIs externas.',
+                challenges: [
+                    'Integração com 5+ APIs externas diferentes',
+                    'Tratamento de rate limits e timeouts',
+                    'Necessidade de retry inteligente',
+                    'Monitoramento e alertas em tempo real'
+                ],
+                solutions: [
+                    'DAGs modulares e reutilizáveis',
+                    'Custom operators para cada API',
+                    'Implementação de exponential backoff',
+                    'Integração com Slack para alertas',
+                    'Logs estruturados e centralizados'
+                ],
+                results: [
+                    'Pipeline com 99.9% de disponibilidade',
+                    '100% de dados capturados sem perdas',
+                    'Redução de 90% em falhas manuais',
+                    'Tempo de resposta a incidentes < 5 min'
+                ],
+                github: 'https://github.com/isabellazramos',
+                tech: ['Apache Airflow', 'Python', 'Docker', 'PostgreSQL', 'APIs REST', 'Slack API']
+            },
+            {
+                id: 'spark-processing',
+                title: '⚡ Processamento Distribuído com Spark',
+                shortDesc: 'Processamento distribuído de dados em larga escala com PySpark. Otimização de jobs e análise de performance em clusters.',
+                tags: ['PySpark', 'Spark', 'Big Data'],
+                fullDescription: 'Implementação de processamento distribuído de grandes volumes de dados usando Apache Spark.',
+                challenges: [
+                    'Processar 500GB+ de dados diariamente',
+                    'Otimização de jobs Spark lentos',
+                    'Gerenciamento de memória em clusters',
+                    'Transformações complexas em dados distribuídos'
+                ],
+                solutions: [
+                    'Particionamento inteligente de dados',
+                    'Uso de broadcast joins para tabelas pequenas',
+                    'Caching estratégico de dataframes',
+                    'Tuning de configurações do Spark',
+                    'Monitoramento com Spark UI'
+                ],
+                results: [
+                    'Redução de 75% no tempo de processamento',
+                    'Processamento de 500GB em < 2 horas',
+                    'Economia de recursos computacionais',
+                    'Pipeline totalmente automatizado'
+                ],
+                github: 'https://github.com/isabellazramos',
+                tech: ['PySpark', 'Apache Spark', 'Python', 'Hadoop', 'YARN', 'Scala']
+            },
+            {
+                id: 'dados-publicos-brasil',
+                title: '🇧🇷 Pipeline Dados Públicos Brasil',
+                shortDesc: 'Pipeline de ingestão e transformação de dados públicos brasileiros (IBGE, DATASUS). Integração com múltiplas APIs governamentais.',
+                tags: ['Python', 'APIs', 'ETL'],
+                fullDescription: 'Sistema completo de ingestão e transformação de dados públicos brasileiros de fontes como IBGE e DATASUS.',
+                challenges: [
+                    'APIs governamentais com documentação limitada',
+                    'Formatos de dados inconsistentes',
+                    'Dados históricos extensos',
+                    'Necessidade de validação rigorosa'
+                ],
+                solutions: [
+                    'Wrapper Python para APIs governamentais',
+                    'Normalização e padronização de dados',
+                    'Pipeline incremental com controle de versão',
+                    'Validação automática de dados',
+                    'Armazenamento em Data Lake estruturado'
+                ],
+                results: [
+                    'Centralização de 10+ fontes de dados públicos',
+                    'Dados atualizados diariamente',
+                    'API unificada para consumo interno',
+                    'Documentação completa dos dados'
+                ],
+                github: 'https://github.com/isabellazramos',
+                tech: ['Python', 'Pandas', 'APIs REST', 'SQLAlchemy', 'FastAPI', 'PostgreSQL']
+            },
+            {
+                id: 'saude-publica',
+                title: '🏥 Análise Saúde Pública',
+                shortDesc: 'Análise de dados de saúde pública com foco em PNPS e PNH. Visualizações e insights sobre políticas de saúde no Brasil.',
+                tags: ['Python', 'Pandas', 'Análise de Dados'],
+                fullDescription: 'Projeto de análise exploratória e visualização de dados do sistema de saúde público brasileiro.',
+                challenges: [
+                    'Dados complexos e multidimensionais',
+                    'Necessidade de análises estatísticas avançadas',
+                    'Visualizações para diferentes públicos',
+                    'Contextualização com políticas públicas'
+                ],
+                solutions: [
+                    'Pipeline de análise reproduzível em Python',
+                    'Visualizações interativas com Plotly',
+                    'Análise estatística com SciPy',
+                    'Notebooks documentados e compartilháveis',
+                    'Dashboard executivo com métricas chave'
+                ],
+                results: [
+                    'Identificação de padrões nas políticas de saúde',
+                    'Relatórios automáticos mensais',
+                    'Suporte a tomada de decisão',
+                    '20+ visualizações interativas'
+                ],
+                github: 'https://github.com/isabellazramos/analise-excesso-de-mortes-covid19-america-latina',
+                tech: ['Python', 'Pandas', 'NumPy', 'Plotly', 'Jupyter', 'Matplotlib', 'Seaborn']
+            }
+        ];
+
+        // Dados das certificações
+        const certificationsData = [
+            { title: 'Cleaning Data with PySpark', provider: 'DataCamp', date: 'Dez 2025', category: 'Big Data' },
+            { title: 'Big Data Fundamentals with PySpark', provider: 'DataCamp', date: 'Jul 2025', category: 'Big Data' },
+            { title: 'Formação Apache Airflow', provider: 'Alura', date: 'Mar 2025', category: 'Data Engineering' },
+            { title: 'Formação LangChain', provider: 'Alura', date: 'Nov 2024', category: 'AI/ML' },
+            { title: 'Build a Data Warehouse with BigQuery', provider: 'Google Cloud', date: 'Mai 2024', category: 'Cloud' },
+            { title: 'Scripting with Python and SQL', provider: 'Coursera', date: 'Fev 2023', category: 'Programming' }
+        ];
+
+        // Componente Header
+        function Header({ currentPage, setCurrentPage }) {
+            const [scrolled, setScrolled] = useState(false);
+            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleMenuClick = () => {
+                setMobileMenuOpen(false);
+            };
+
+            return (
+                <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-zinc-950/95 backdrop-blur-md border-b border-emerald-500/20' : 'bg-transparent'}`}>
+                    <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                        <button 
+                            onClick={() => setCurrentPage('home')}
+                            className="text-xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent hover:from-emerald-400 hover:to-teal-400 transition-all"
+                        >
+                            Isabella Ramos
+                        </button>
+                        
+                        {currentPage === 'home' ? (
+                            <>
+                                {/* Desktop Menu */}
+                                <ul className="hidden md:flex gap-8">
+                                    <li><a href="#sobre" className="text-gray-400 hover:text-emerald-500 transition-colors">Sobre</a></li>
+                                    <li><a href="#experiencia" className="text-gray-400 hover:text-emerald-500 transition-colors">Experiência</a></li>
+                                    <li><a href="#certificacoes" className="text-gray-400 hover:text-emerald-500 transition-colors">Certificados</a></li>
+                                    <li><a href="#skills" className="text-gray-400 hover:text-emerald-500 transition-colors">Habilidades</a></li>
+                                    <li><button onClick={() => setCurrentPage('projects')} className="text-gray-400 hover:text-emerald-500 transition-colors">Projetos</button></li>
+                                    <li><a href="#contato" className="text-gray-400 hover:text-emerald-500 transition-colors">Contato</a></li>
+                                </ul>
+
+                                {/* Mobile Menu Button */}
+                                <button 
+                                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                    className="md:hidden text-gray-400 hover:text-emerald-500 transition-colors p-2"
+                                    aria-label="Menu"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        {mobileMenuOpen ? (
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        ) : (
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                        )}
+                                    </svg>
+                                </button>
+
+                                {/* Mobile Menu */}
+                                {mobileMenuOpen && (
+                                    <div className="md:hidden fixed top-[73px] left-0 right-0 bg-zinc-950/95 backdrop-blur border-b border-emerald-500/20 shadow-xl z-40">
+                                        <ul className="flex flex-col py-4">
+                                            <li><a href="#sobre" onClick={handleMenuClick} className="block px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Sobre</a></li>
+                                            <li><a href="#experiencia" onClick={handleMenuClick} className="block px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Experiência</a></li>
+                                            <li><a href="#certificacoes" onClick={handleMenuClick} className="block px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Certificados</a></li>
+                                            <li><a href="#skills" onClick={handleMenuClick} className="block px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Habilidades</a></li>
+                                            <li><button onClick={() => { setCurrentPage('projects'); handleMenuClick(); }} className="block w-full text-left px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Projetos</button></li>
+                                            <li><a href="#contato" onClick={handleMenuClick} className="block px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors">Contato</a></li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </>
+                        ) : (
+                            <button 
+                                onClick={() => setCurrentPage('home')}
+                                className="text-gray-400 hover:text-emerald-500 transition-colors flex items-center gap-2"
+                            >
+                                ← Voltar
+                            </button>
+                        )}
+                    </nav>
+                </header>
+            );
+        }
+
+        // Componente Hero
+        function Hero() {
+            return (
+                <section className="pt-40 pb-32 px-6 relative glow-effect fade-in min-h-screen flex items-center">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="flex flex-col md:flex-row items-center gap-12">
+                            <div className="flex-1 text-left">
+                                <p className="text-emerald-400 text-lg mb-2">Olá, meu nome é</p>
+                                <h1 className="text-5xl md:text-6xl font-extrabold mb-4 gradient-text">
+                                    Isabella Ramos
+                                </h1>
+                                <p className="text-3xl md:text-4xl text-gray-400 mb-6">Engenheira de Dados</p>
+                                <div className="text-gray-400 text-lg leading-relaxed">
+                                    <p>Transformando dados em insights estratégicos através de pipelines robustos, orquestração eficiente e soluções cloud escaláveis.</p>
+                                </div>
+                            </div>
+                            <div className="flex-shrink-0">
+                                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border-4 border-emerald-500/30 flex items-center justify-center">
+                                    <div className="text-8xl">👩‍💻</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente About
+        function About() {
+            return (
+                <section id="sobre" className="py-20 px-6 bg-zinc-900/30">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Sobre Mim</h2>
+                        <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                            <p>
+                                Sou Engenheira de Dados apaixonada por transformar dados brutos em insights acionáveis. Com experiência em construção de pipelines escaláveis e arquiteturas de dados robustas, trabalho para otimizar processos e garantir a qualidade dos dados em cada etapa.
+                            </p>
+                            <p>
+                                Minha jornada na engenharia de dados me proporcionou experiência com ferramentas modernas como <span className="text-emerald-400 font-semibold">Apache Airflow</span>, <span className="text-emerald-400 font-semibold">dbt</span>, <span className="text-emerald-400 font-semibold">BigQuery</span> e <span className="text-emerald-400 font-semibold">PySpark</span>. Tenho forte conhecimento em cloud computing (GCP), modelagem de dados e orquestração de workflows complexos.
+                            </p>
+                            <p>
+                                Atualmente trabalho na <span className="text-emerald-400 font-semibold">NIU — Stefanini</span>, onde desenvolvo soluções de dados escaláveis e implemento melhores práticas de engenharia de dados. Sempre busco aprender novas tecnologias e compartilhar conhecimento com a comunidade.
+                            </p>
+                            <p>
+                                Quando não estou codificando, gosto de explorar novas ferramentas de dados, contribuir em projetos open source e me manter atualizada com as últimas tendências em engenharia de dados e cloud computing.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente Skills
+        function Skills() {
+            const skills = [
+                { title: '💾 Databases', tags: ['BigQuery', 'PostgreSQL', 'MySQL', 'SQL Server'] },
+                { title: '🔄 Data Engineering', tags: ['Apache Airflow', 'dbt', 'Spark', 'ELT/ETL'] },
+                { title: '💻 Linguagens', tags: ['Python', 'SQL', 'PySpark', 'R', 'Pandas'] },
+                { title: '☁️ Cloud & DevOps', tags: ['Google Cloud Platform', 'Docker', 'Git', 'Linux'] },
+                { title: '📊 Arquitetura', tags: ['Data Warehouse', 'Data Lake', 'Visualização'] },
+                { title: '🤖 AI & ML', tags: ['LangChain', 'ChatGPT APIs', 'Machine Learning'] }
+            ];
+
+            return (
+                <section id="skills" className="py-20 px-6">
+                    <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Competências Técnicas</h2>
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {skills.map((skill, idx) => (
+                            <div key={idx} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-emerald-500 transition-all hover-scale">
+                                <h3 className="text-xl font-semibold mb-4 text-emerald-500">{skill.title}</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {skill.tags.map((tag, i) => (
+                                        <span key={i} className="px-3 py-1 bg-zinc-800 rounded-md text-sm text-gray-400">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente Experience
+        function Experience() {
+            const experiences = [
+                {
+                    title: 'Engenheira de Dados Jr.',
+                    company: 'NIU — Stefanini',
+                    location: 'Remoto',
+                    period: 'Jan 2024 – Presente',
+                    current: true,
+                    description: [
+                        'Desenvolvimento de pipelines ETL/ELT para processamento de dados em larga escala',
+                        'Implementação de soluções de data quality e governança de dados',
+                        'Orquestração de workflows com Apache Airflow',
+                        'Desenvolvimento de transformações com dbt e SQL avançado'
+                    ]
+                },
+                {
+                    title: 'Engenheira de Dados Jr. / Estagiária',
+                    company: 'ammo.varejo',
+                    location: 'Remoto',
+                    period: 'Jun 2022 – Dez 2023',
+                    description: [
+                        'Construção de pipelines de dados usando Python e SQL',
+                        'Implementação de data marts e data warehouses no BigQuery',
+                        'Automatização de processos de ingestão de dados',
+                        'Análise e modelagem de dados para equipes de negócio'
+                    ]
+                },
+                {
+                    title: 'Desenvolvedora de Software',
+                    company: 'Tribunal de Contas da União',
+                    location: 'Brasília, DF',
+                    period: 'Jul 2021 – Abr 2022',
+                    description: [
+                        'Desenvolvimento de aplicações web com Flask e Python',
+                        'Implementação de scripts de automação e análise de dados',
+                        'Suporte a sistemas internos e integração de dados'
+                    ]
+                },
+                {
+                    title: 'Iniciação Científica Voluntária',
+                    company: 'Universidade Federal de Viçosa',
+                    location: 'Viçosa, MG',
+                    period: 'Mar 2020 – Dez 2021',
+                    description: [
+                        'Pesquisa em análise de dados e visualização',
+                        'Desenvolvimento de projetos acadêmicos em ciência de dados',
+                        'Participação em projetos de pesquisa do departamento'
+                    ]
+                }
+            ];
+
+            return (
+                <section id="experiencia" className="py-20 px-6 bg-zinc-900/30">
+                    <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Experiência Profissional</h2>
+                    <div className="max-w-4xl mx-auto relative">
+                        {/* Timeline Line */}
+                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent"></div>
+
+                        {experiences.map((exp, idx) => (
+                            <div key={idx} className="relative pl-12 pb-12 last:pb-0">
+                                {/* Timeline Dot */}
+                                <div className={`absolute left-0 top-2 w-8 h-8 rounded-full border-4 flex items-center justify-center ${
+                                    exp.current 
+                                        ? 'bg-emerald-500 border-emerald-500 shadow-lg shadow-emerald-500/50' 
+                                        : 'bg-zinc-900 border-emerald-500/50'
+                                }`}>
+                                    {exp.current && (
+                                        <span className="w-3 h-3 bg-white rounded-full animate-pulse"></span>
+                                    )}
+                                </div>
+
+                                {/* Content Card */}
+                                <div className={`bg-zinc-900 border rounded-xl p-6 hover:border-emerald-500 transition-all hover-scale ${
+                                    exp.current ? 'border-emerald-500/50' : 'border-zinc-800'
+                                }`}>
+                                    {exp.current && (
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-medium rounded-full mb-3 border border-emerald-500/30">
+                                            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                                            Atual
+                                        </div>
+                                    )}
+                                    
+                                    <h3 className="text-xl font-bold mb-1 text-gray-100">{exp.title}</h3>
+                                    
+                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 mb-4">
+                                        <span className="flex items-center gap-1">
+                                            <span className="text-emerald-400">💼</span>
+                                            {exp.company}
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <span className="text-emerald-400">📍</span>
+                                            {exp.location}
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <span className="text-emerald-400">📅</span>
+                                            {exp.period}
+                                        </span>
+                                    </div>
+
+                                    <ul className="space-y-2">
+                                        {exp.description.map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                                                <span className="text-emerald-400 mt-1">▹</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente Certifications
+        function Certifications() {
+            const [filter, setFilter] = useState('Todas');
+            const categories = ['Todas', 'Big Data', 'Data Engineering', 'AI/ML', 'Cloud', 'Programming'];
+
+            const filteredCerts = filter === 'Todas' 
+                ? certificationsData 
+                : certificationsData.filter(cert => cert.category === filter);
+
+            return (
+                <section id="certificacoes" className="py-20 px-6">
+                    <h2 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Certificações</h2>
+                    
+                    <div className="flex justify-center gap-3 mb-12 flex-wrap">
+                        {categories.map(cat => (
+                            <button
+                                key={cat}
+                                onClick={() => setFilter(cat)}
+                                className={`filter-btn px-4 py-2 rounded-lg border ${
+                                    filter === cat 
+                                        ? 'active' 
+                                        : 'bg-zinc-800 border-zinc-700 text-gray-400 hover:border-emerald-500'
+                                }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {filteredCerts.map((cert, idx) => (
+                            <div key={idx} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-emerald-500 hover-scale hover:shadow-emerald-500/20 hover:shadow-lg">
+                                <h3 className="text-base font-semibold mb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">{cert.title}</h3>
+                                <p className="text-gray-500 text-xs mb-1">{cert.provider}</p>
+                                <p className="text-gray-600 text-xs">{cert.date}</p>
+                                <span className="inline-block mt-3 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-md text-xs text-emerald-400">
+                                    {cert.category}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente ProjectsPage - Página separada
+        function ProjectsPage({ setCurrentPage, setSelectedProject }) {
+            const handleProjectClick = (project) => {
+                setSelectedProject(project);
+                setCurrentPage('project-detail');
+                window.scrollTo(0, 0);
+            };
+
+            return (
+                <div className="pt-32 pb-20 px-6 fade-in">
+                    <h1 className="text-6xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                        Meus Projetos
+                    </h1>
+                    <p className="text-center text-gray-400 mb-16 text-xl max-w-3xl mx-auto">
+                        Portfólio completo de projetos de engenharia de dados. Clique em qualquer projeto para ver os detalhes técnicos, desafios e resultados.
+                    </p>
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {projectsData.map((project, idx) => (
+                            <div
+                                key={idx}
+                                onClick={() => handleProjectClick(project)}
+                                className="project-card bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover-scale hover:border-emerald-500"
+                            >
+                                <h3 className="text-xl font-semibold mb-3 text-emerald-400">{project.title}</h3>
+                                <p className="text-gray-400 mb-4 leading-relaxed">{project.shortDesc}</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag, i) => (
+                                        <span key={i} className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-md text-sm text-emerald-400">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        // Componente ProjectDetail
+        function ProjectDetail({ project }) {
+            return (
+                <div className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
+                    <h1 className="text-5xl font-bold mb-6">{project.title}</h1>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8">
+                        {project.tech.map((tech, i) => (
+                            <span key={i} className="px-4 py-2 bg-emerald-600 rounded-lg text-sm font-medium">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+
+                    <div className="space-y-12">
+                        <section>
+                            <h2 className="text-3xl font-bold mb-4 text-emerald-400">📋 Descrição</h2>
+                            <p className="text-gray-300 text-lg leading-relaxed">{project.fullDescription}</p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-3xl font-bold mb-4 text-emerald-400">🎯 Desafios</h2>
+                            <ul className="space-y-3">
+                                {project.challenges.map((challenge, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <span className="text-emerald-500 text-xl mt-1">•</span>
+                                        <span className="text-gray-300 text-lg">{challenge}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2 className="text-3xl font-bold mb-4 text-emerald-400">💡 Soluções Implementadas</h2>
+                            <ul className="space-y-3">
+                                {project.solutions.map((solution, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <span className="text-green-500 text-xl mt-1">✓</span>
+                                        <span className="text-gray-300 text-lg">{solution}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2 className="text-3xl font-bold mb-4 text-emerald-400">📊 Resultados</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {project.results.map((result, i) => (
+                                    <div key={i} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                                        <p className="text-gray-300 text-lg">{result}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section className="border-t border-zinc-800 pt-8">
+                            <a 
+                                href={project.github}
+                                target="_blank"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg text-lg font-semibold transition-all hover-scale shadow-lg shadow-emerald-500/30"
+                            >
+                                Ver no GitHub →
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            );
+        }
+
+        // Componente Contact
+        function Contact() {
+            return (
+                <section id="contato" className="py-20 px-6">
+                    <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Vamos Conversar?</h2>
+                    <div className="max-w-2xl mx-auto bg-zinc-900 border border-zinc-800 rounded-xl p-12 text-center">
+                        <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Entre em contato</h3>
+                        <p className="text-gray-400 mb-8">
+                            Estou sempre aberta a novas oportunidades e colaborações em projetos de dados.
+                        </p>
+                        <div className="flex justify-center gap-4 flex-wrap">
+                            <a 
+                                href="mailto:isabellamenezesramos@outlook.com" 
+                                className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg font-semibold transition-all hover-scale flex items-center gap-2"
+                            >
+                                📧 Email
+                            </a>
+                            <a 
+                                href="https://linkedin.com/in/isabella-ramos-03a5a2207" 
+                                target="_blank"
+                                className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-emerald-500 rounded-lg font-semibold transition-all hover-scale flex items-center gap-2"
+                            >
+                                💼 LinkedIn
+                            </a>
+                            <a 
+                                href="https://github.com/isabellazramos" 
+                                target="_blank"
+                                className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-emerald-500 rounded-lg font-semibold transition-all hover-scale flex items-center gap-2"
+                            >
+                                🐙 GitHub
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Componente Footer
+        function Footer() {
+            return (
+                <footer className="py-8 px-6 border-t border-zinc-800">
+                    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-gray-500 text-sm">
+                            © 2026 Isabella Ramos. Todos os direitos reservados.
+                        </p>
+                        <div className="flex gap-6">
+                            <a href="https://github.com/isabellazramos" target="_blank" className="text-gray-500 hover:text-emerald-500 transition-colors">
+                                GitHub
+                            </a>
+                            <a href="https://linkedin.com/in/isabella-ramos-03a5a2207" target="_blank" className="text-gray-500 hover:text-emerald-500 transition-colors">
+                                LinkedIn
+                            </a>
+                            <a href="mailto:isabellamenezesramos@outlook.com" className="text-gray-500 hover:text-emerald-500 transition-colors">
+                                Email
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+            );
+        }
+
+        // Componente principal App
+        function App() {
+            const [currentPage, setCurrentPage] = useState('home');
+            const [selectedProject, setSelectedProject] = useState(null);
+
+            return (
+                <div className="min-h-screen bg-zinc-950">
+                    <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                    
+                    {currentPage === 'home' && (
+                        <>
+                            <Hero />
+                            <About />
+                            <Experience />
+                            <Certifications />
+                            <Skills />
+                            <Contact />
+                            <Footer />
+                        </>
+                    )}
+                    
+                    {currentPage === 'projects' && (
+                        <>
+                            <ProjectsPage 
+                                setCurrentPage={setCurrentPage} 
+                                setSelectedProject={setSelectedProject}
+                            />
+                            <Footer />
+                        </>
+                    )}
+                    
+                    {currentPage === 'project-detail' && selectedProject && (
+                        <>
+                            <ProjectDetail project={selectedProject} />
+                            <Footer />
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        // Renderização
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>
