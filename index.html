@@ -7,8 +7,8 @@
     <meta name="description" content="Portfólio de Isabella Ramos - Engenheira de Dados especializada em pipelines escaláveis, dbt, Apache Airflow e BigQuery">
     
     <!-- React & Babel -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <!-- Tailwind CSS -->
@@ -34,33 +34,35 @@
 <body class="bg-zinc-950 text-gray-100">
     <div id="root"></div>
 
-    <!-- Constantes -->
+    <!-- Carregar todos os scripts em ordem -->
     <script src="js/constants.js"></script>
-    
-    <!-- Dados -->
     <script src="js/data/projects.js"></script>
     <script src="js/data/certifications.js"></script>
     <script src="js/data/skills.js"></script>
     <script src="js/data/experiences.js"></script>
-    
-    <!-- Componentes -->
-    <script type="text/babel" src="js/components/Header.js"></script>
-    <script type="text/babel" src="js/components/Footer.js"></script>
-    
-    <!-- Seções -->
-    <script type="text/babel" src="js/sections/Hero.js"></script>
-    <script type="text/babel" src="js/sections/About.js"></script>
-    <script type="text/babel" src="js/sections/Skills.js"></script>
-    <script type="text/babel" src="js/sections/Experience.js"></script>
-    <script type="text/babel" src="js/sections/Certifications.js"></script>
-    <script type="text/babel" src="js/sections/Contact.js"></script>
-    
-    <!-- Páginas -->
-    <script type="text/babel" src="js/pages/HomePage.js"></script>
-    <script type="text/babel" src="js/pages/ProjectsPage.js"></script>
-    <script type="text/babel" src="js/pages/ProjectDetail.js"></script>
-    
-    <!-- App Principal -->
-    <script type="text/babel" src="js/app.js"></script>
+
+    <!-- Componentes e páginas com Babel -->
+    <script type="text/babel" data-type="module">
+        // Carregar e executar todos os componentes inline
+        Promise.all([
+            fetch('js/components/Header.js').then(r => r.text()),
+            fetch('js/components/Footer.js').then(r => r.text()),
+            fetch('js/sections/Hero.js').then(r => r.text()),
+            fetch('js/sections/About.js').then(r => r.text()),
+            fetch('js/sections/Skills.js').then(r => r.text()),
+            fetch('js/sections/Experience.js').then(r => r.text()),
+            fetch('js/sections/Certifications.js').then(r => r.text()),
+            fetch('js/sections/Contact.js').then(r => r.text()),
+            fetch('js/pages/HomePage.js').then(r => r.text()),
+            fetch('js/pages/ProjectsPage.js').then(r => r.text()),
+            fetch('js/pages/ProjectDetail.js').then(r => r.text()),
+            fetch('js/app.js').then(r => r.text())
+        ]).then(scripts => {
+            // Executar todos os scripts
+            scripts.forEach(script => {
+                eval(Babel.transform(script, { presets: ['react'] }).code);
+            });
+        });
+    </script>
 </body>
 </html>
