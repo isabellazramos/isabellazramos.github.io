@@ -14,7 +14,12 @@ function App() {
           setSelectedProject: setSelectedProject
         });
       case PAGES.PROJECT_DETAIL:
-        return selectedProject ? React.createElement(ProjectDetail, { project: selectedProject }) : null;
+        if (!selectedProject || !selectedProject.component) {
+          return null;
+        }
+        // Renderiza o componente específico do projeto
+        const ProjectComponent = window[selectedProject.component];
+        return ProjectComponent ? React.createElement(ProjectComponent) : null;
       default:
         return null;
     }
