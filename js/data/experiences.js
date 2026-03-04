@@ -2,7 +2,7 @@
 
 const EXPERIENCES_DATA = [
     {
-        title: 'Engenheira de Dados Jr.',
+        title: 'Engenheira de Dados',
         company: 'NIU — Stefanini',
         location: 'Remoto',
         period: 'Jan 2024 – Presente',
@@ -29,23 +29,35 @@ const EXPERIENCES_DATA = [
     {
         title: 'Desenvolvedora de Software',
         company: 'Tribunal de Contas da União',
-        location: 'Brasília, DF',
+        location: 'Remoto',
         period: 'Jul 2021 – Abr 2022',
         description: [
-            'Desenvolvimento de aplicações web com Flask e Python',
-            'Implementação de scripts de automação e análise de dados',
-            'Suporte a sistemas internos e integração de dados'
+            'Desenvolvimento de sistemas em ambiente Oracle Application Express.',
+            'Atividades abrangentes de modelagem de bancos de dados, levantamento de requisitos e implementação de',
+            'sistemas.'
         ]
     },
     {
         title: 'Iniciação Científica Voluntária',
         company: 'Universidade Federal de Viçosa',
-        location: 'Viçosa, MG',
+        location: 'Florestal, MG',
         period: 'Mar 2020 – Dez 2021',
         description: [
-            'Pesquisa em análise de dados e visualização',
-            'Desenvolvimento de projetos acadêmicos em ciência de dados',
-            'Participação em projetos de pesquisa do departamento'
+            'Estudo da linguagem de programação R com o uso do RStudio', 
+            'e estudo do banco de dados disponibilizado',
+            'pelo Leiden Ranking via software R, com o objetivo de criar visualizaçôes',
+            'gráficas e estatísticas descritivas do banco de dados do Leiden Ranking.'
+        ]
+    },
+    {
+        title: 'Bolsista de Iniciação Científica CNPq',
+        company: 'Universidade Federal de Viçosa',
+        location: 'Florestal, MG',
+        period: 'Fev 2020 – Jul 2020',
+        description: [
+            'Análise de dados usando Python, com o foco em analisar características',
+            'dos dispositivos dos usuários do Brasil e relacionar com as',
+            'características do local de residência do usuário.'
         ]
     }
 ];
