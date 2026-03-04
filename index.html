@@ -142,6 +142,7 @@
         const { useState, useEffect, Fragment } = React;
 
         async function loadAllModules() {
+            console.log('loadAllModules start');
             const modules = [
                 'js/components/Header.js',
                 'js/components/Footer.js',
@@ -156,15 +157,32 @@
                 'js/pages/ProjectDetail.js'
             ];
 
-            const loadedCode = await Promise.all(
-                modules.map(url => fetch(url).then(r => r.text()))
-            );
+            let loadedCode;
+            try {
+                loadedCode = await Promise.all(
+                    modules.map(url => fetch(url).then(r => {
+                        if (!r.ok) throw new Error(`failed fetch ${url}: ${r.status}`);
+                        return r.text();
+                    }))
+                );
+            } catch (e) {
+                console.error('error fetching modules', e);
+                return;
+            }
 
-            // join modules and transpile JSX using Babel before evaluating
-            const joined = loadedCode.join('\n\n');
-            const transpiled = Babel.transform(joined, { presets: ['react'] }).code;
-            eval(transpiled);
-
+            try {
+                // join modules and transpile JSX using Babel before evaluating
+                const joined = loadedCode.join('\n\n');
+                console.log('joined code length', joined.length);
+                const transpiled = Babel.transform(joined, { presets: ['react'] }).code;
+                console.log('transpiled length', transpiled.length);
+                // use global eval so component declarations land on window
+                window.eval(transpiled);
+                console.log('Header after eval', typeof Header);
+            } catch (e) {
+                console.error('error evaluating modules', e);
+            }
+            // after eval we can define App and render
             function App() {
                 const [currentPage, setCurrentPage] = useState(PAGES.HOME);
                 const [selectedProject, setSelectedProject] = useState(null);
