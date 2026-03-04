@@ -9,27 +9,26 @@ function About() {
                 </h2>
                 <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                     <p>
-                        Sou Engenheira de Dados apaixonada por transformar dados brutos em insights acionáveis. 
-                        Com experiência em construção de pipelines escaláveis e arquiteturas de dados robustas, 
-                        trabalho para otimizar processos e garantir a qualidade dos dados em cada etapa.
-                    </p>
-                    <p>
-                        Minha jornada na engenharia de dados me proporcionou experiência com ferramentas modernas como{' '}
-                        <span className="text-emerald-400 font-semibold">Apache Airflow</span>,{' '}
+                        Engenheira de Dados com experiência em coleta, processamento e transformação de dados, 
+                        além de desenvolvimento de soluções em nuvem e criação de dashboards. Graduada em Ciência da Computação pela Universidade
+                        Federal de Viçosa, possuo conhecimentos em 
+                        <span className="text-emerald-400 font-semibold">Python</span>,{' '}
+                        <span className="text-emerald-400 font-semibold">SQL</span>,{' '}
                         <span className="text-emerald-400 font-semibold">dbt</span>,{' '}
-                        <span className="text-emerald-400 font-semibold">BigQuery</span> e{' '}
-                        <span className="text-emerald-400 font-semibold">PySpark</span>. 
-                        Tenho forte conhecimento em cloud computing (GCP), modelagem de dados e orquestração de workflows complexos.
+                        <span className="text-emerald-400 font-semibold">Apache Airflow</span>,{' '}
+                        <span className="text-emerald-400 font-semibold">GCP</span> e diversas ferramentas
+                        voltadas para engenharia de dados e machine learning.
                     </p>
                     <p>
-                        Atualmente trabalho na <span className="text-emerald-400 font-semibold">NIU — Stefanini</span>, 
-                        onde desenvolvo soluções de dados escaláveis e implemento melhores práticas de engenharia de dados. 
-                        Sempre busco aprender novas tecnologias e compartilhar conhecimento com a comunidade.
+                        Atualmente, atuo como Engenheira de Dados na <span className="text-emerald-400 font-semibold">NIU — Stefanini</span>, trabalhando com a migração e integração
+                        de fontes de dados, manutenção de data lakes e orquestração de processos de dados. Também tive experiências
+                        anteriores no setor varejista e governamental.
                     </p>
                     <p>
-                        Quando não estou codificando, gosto de explorar novas ferramentas de dados, 
-                        contribuir em projetos open source e me manter atualizada com as últimas tendências 
-                        em engenharia de dados e cloud computing.
+                        Além do trabalho técnico, tenho um forte background acadêmico, com pesquisas em análise de dados e experiência
+                        no desenvolvimento de aplicações voltadas para ciência e educação. Busco sempre aprimorar meus conhecimentos
+                        por meio de certificações e cursos em tecnologias emergentes. Sempre aberta a desafios e oportunidades para
+                        aplicar e expandir meus conhecimentos em dados!
                     </p>
                 </div>
             </div>
