@@ -7,32 +7,38 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case PAGES.HOME:
-        return <HomePage />;
+        return React.createElement(HomePage);
       case PAGES.PROJECTS:
-        return (
-          <ProjectsPage
-            setCurrentPage={setCurrentPage}
-            setSelectedProject={setSelectedProject}
-          />
-        );
+        return React.createElement(ProjectsPage, { 
+          setCurrentPage: setCurrentPage,
+          setSelectedProject: setSelectedProject
+        });
       case PAGES.PROJECT_DETAIL:
-        return selectedProject ? (
-          <ProjectDetail project={selectedProject} />
-        ) : null;
+        return selectedProject ? React.createElement(ProjectDetail, { project: selectedProject }) : null;
       default:
         return null;
     }
   };
 
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      {renderPage()}
-      <Footer />
-    </div>
+  return React.createElement('div', { className: 'min-h-screen bg-zinc-950' },
+    React.createElement(Header, { currentPage: currentPage, setCurrentPage: setCurrentPage }),
+    renderPage(),
+    React.createElement(Footer)
   );
 }
 
 // ==================== RENDERIZAÇÃO ====================
 
-ReactDOM.render(<App />, document.getElementById("root"));
+console.log('App function defined');
+console.log('PAGES:', PAGES);
+console.log('Root element:', document.getElementById('root'));
+
+try {
+  ReactDOM.render(
+    React.createElement(App),
+    document.getElementById('root')
+  );
+  console.log('React app rendered successfully');
+} catch (error) {
+  console.error('Error rendering React app:', error);
+}
