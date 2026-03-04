@@ -1,38 +1,40 @@
 // ==================== APP PRINCIPAL ====================
 
 function App() {
-    const { useState } = React;
-    const [currentPage, setCurrentPage] = useState(PAGES.HOME);
-    const [selectedProject, setSelectedProject] = useState(null);
+  const [currentPage, setCurrentPage] = React.useState(PAGES.HOME);
+  const [selectedProject, setSelectedProject] = React.useState(null);
 
-    const renderPage = () => {
-        switch (currentPage) {
-            case PAGES.HOME:
-                return React.createElement(HomePage);
-            case PAGES.PROJECTS:
-                return React.createElement(ProjectsPage, { 
-                    setCurrentPage, 
-                    setSelectedProject 
-                });
-            case PAGES.PROJECT_DETAIL:
-                return selectedProject ? React.createElement(ProjectDetail, { project: selectedProject }) : null;
-            default:
-                return null;
-        }
-    };
+  const renderPage = () => {
+    switch (currentPage) {
+      case PAGES.HOME:
+        return <HomePage />;
+      case PAGES.PROJECTS:
+        return (
+          <ProjectsPage
+            setCurrentPage={setCurrentPage}
+            setSelectedProject={setSelectedProject}
+          />
+        );
+      case PAGES.PROJECT_DETAIL:
+        return selectedProject ? (
+          <ProjectDetail project={selectedProject} />
+        ) : null;
+      default:
+        return null;
+    }
+  };
 
-    return React.createElement('div', { className: 'min-h-screen bg-zinc-950' },
-        React.createElement(Header, { currentPage, setCurrentPage }),
-        renderPage(),
-        React.createElement(Footer)
-    );
+  return (
+    <div className="min-h-screen bg-zinc-950">
+      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {renderPage()}
+      <Footer />
+    </div>
+  );
 }
 
 // ==================== RENDERIZAÇÃO ====================
 
-window.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-        React.createElement(App),
-        document.getElementById('root')
-    );
+window.addEventListener("DOMContentLoaded", () => {
+  ReactDOM.render(<App />, document.getElementById("root"));
 });
