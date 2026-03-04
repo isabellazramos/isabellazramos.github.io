@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isabella Ramos | Engenheira de Dados</title>
     <meta name="description" content="Portfólio de Isabella Ramos - Engenheira de Dados especializada em pipelines escaláveis, dbt, Apache Airflow e BigQuery">
+    <link rel="icon" href="favicon.ico">
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -142,7 +143,7 @@
         const { useState, useEffect, Fragment } = React;
 
         async function loadAllModules() {
-            console.log('loadAllModules start');
+            // initialisation
             const modules = [
                 'js/components/Header.js',
                 'js/components/Footer.js',
@@ -173,12 +174,12 @@
             try {
                 // join modules and transpile JSX using Babel before evaluating
                 const joined = loadedCode.join('\n\n');
-                console.log('joined code length', joined.length);
+                // joined modules
                 const transpiled = Babel.transform(joined, { presets: ['react'] }).code;
-                console.log('transpiled length', transpiled.length);
+                // transpiled code
                 // use global eval so component declarations land on window
                 window.eval(transpiled);
-                console.log('Header after eval', typeof Header);
+                // components should now be available
             } catch (e) {
                 console.error('error evaluating modules', e);
             }
