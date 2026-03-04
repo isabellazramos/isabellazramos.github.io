@@ -12,7 +12,7 @@ function About() {
                         Engenheira de Dados com experiência em coleta, processamento e transformação de dados, 
                         além de desenvolvimento de soluções em nuvem e criação de dashboards. Graduada em Ciência da Computação pela Universidade
                         Federal de Viçosa, possuo conhecimentos em 
-                        <span className="text-emerald-400 font-semibold">Python</span>,{' '}
+                        <span className="text-emerald-400 font-semibold"> Python</span>,{' '}
                         <span className="text-emerald-400 font-semibold">SQL</span>,{' '}
                         <span className="text-emerald-400 font-semibold">dbt</span>,{' '}
                         <span className="text-emerald-400 font-semibold">Apache Airflow</span>,{' '}
