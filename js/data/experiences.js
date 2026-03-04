@@ -43,10 +43,7 @@ const EXPERIENCES_DATA = [
         location: 'Florestal, MG',
         period: 'Mar 2020 – Dez 2021',
         description: [
-            'Estudo da linguagem de programação R com o uso do RStudio', 
-            'e estudo do banco de dados disponibilizado',
-            'pelo Leiden Ranking via software R, com o objetivo de criar visualizaçôes',
-            'gráficas e estatísticas descritivas do banco de dados do Leiden Ranking.'
+            'Estudo da linguagem de programação R com o uso do RStudio e estudo do banco de dados disponibilizado pelo Leiden Ranking via software R, com o objetivo de criar visualizaçôes gráficas e estatísticas descritivas do banco de dados do Leiden Ranking.'
         ]
     },
     {
@@ -55,9 +52,7 @@ const EXPERIENCES_DATA = [
         location: 'Florestal, MG',
         period: 'Fev 2020 – Jul 2020',
         description: [
-            'Análise de dados usando Python, com o foco em analisar características',
-            'dos dispositivos dos usuários do Brasil e relacionar com as',
-            'características do local de residência do usuário.'
+            'Análise de dados usando Python, com o foco em analisar características dos dispositivos dos usuários do Brasil e relacionar com as características do local de residência do usuário.'
         ]
     }
 ];
