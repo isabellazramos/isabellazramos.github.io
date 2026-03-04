@@ -16,8 +16,8 @@ function Hero() {
                         </p>
                     </div>
                     <div className="flex-shrink-0">
-                        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border-4 border-emerald-500/30 flex items-center justify-center">
-                            <div className="text-8xl">👩‍💻</div>
+                        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border-4 border-emerald-500/30 flex items-center justify-center overflow-hidden">
+                            <img src="assets/isabella-ramos.jpeg" alt="Isabella Ramos" className="rounded-full object-cover w-full h-full" />
                         </div>
                     </div>
                 </div>
