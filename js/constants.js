@@ -8,7 +8,7 @@ const PAGES = {
 
 const CONTACT_LINKS = {
     EMAIL: 'isabellamenezesramos@outlook.com',
-    LINKEDIN: 'https://linkedin.com/in/isabella-ramos-03a5a2207',
+    LINKEDIN: 'https://linkedin.com/in/isabella-menezes',
     GITHUB: 'https://github.com/isabellazramos'
 };
 
