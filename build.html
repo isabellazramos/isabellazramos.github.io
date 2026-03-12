@@ -43,7 +43,7 @@
 
     <!-- Script principal com todo o código React -->
     <script type="text/babel">
-        const { useState, useEffect, Fragment } = React;
+        const { useState, useEffect, useRef, Fragment } = React;
 
         // ==================== LOAD MODULES ====================
         
@@ -73,9 +73,15 @@
             function App() {
                 const [currentPage, setCurrentPage] = useState(PAGES.HOME);
                 const [selectedProject, setSelectedProject] = useState(null);
+                const currentPageRef = useRef(currentPage);
+
+                useEffect(() => {
+                    currentPageRef.current = currentPage;
+                }, [currentPage]);
 
                 const handleBack = () => {
-                    if (currentPage === PAGES.PROJECT_DETAIL) {
+                    const page = currentPageRef.current;
+                    if (page === PAGES.PROJECT_DETAIL) {
                         setCurrentPage(PAGES.PROJECTS);
                     } else {
                         setCurrentPage(PAGES.HOME);
