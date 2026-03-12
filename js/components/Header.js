@@ -157,7 +157,14 @@ function Header({ currentPage, setCurrentPage }) {
                     </>
                 ) : (
                     <button 
-                        onClick={() => { setCurrentPage(PAGES.HOME); window.scrollTo(0, 0); }}
+                        onClick={() => { 
+                            if (currentPage === PAGES.PROJECT_DETAIL) {
+                                setCurrentPage(PAGES.PROJECTS);
+                            } else {
+                                setCurrentPage(PAGES.HOME);
+                            }
+                            window.scrollTo(0, 0); 
+                        }}
                         className="text-gray-400 hover:text-emerald-500 transition-colors flex items-center gap-2"
                     >
                         ← Voltar
