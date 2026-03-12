@@ -6,5 +6,5 @@ const SKILLS_DATA = [
     { title: '💻 Linguagens', tags: ['Python', 'SQL', 'PySpark', 'R', 'Pandas'] },
     { title: '☁️ Cloud & DevOps', tags: ['Google Cloud Platform', 'Docker', 'Git', 'Linux'] },
     { title: '📊 Arquitetura', tags: ['Data Warehouse', 'Data Lake', 'Visualização'] },
-    { title: '🤖 AI & ML', tags: ['LangChain', 'ChatGPT APIs', 'Machine Learning'] }
+    { title: '🤖 AI & ML', tags: ['LangChain', 'ChatGPT APIs', 'Machine Learning', 'NLP'] }
 ];

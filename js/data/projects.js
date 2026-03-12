@@ -2,10 +2,19 @@
 
 const PROJECTS_DATA = [
     {
+        id: 'covid-misinfo-detector',
+        title: '🔍 Detecção de Fake News COVID-19',
+        shortDesc: 'Pipeline end-to-end de detecção automática de desinformação sobre COVID-19 em ~93.000 mensagens de grupos públicos do WhatsApp, combinando NLP, dados de fact-checkers e análise geoespacial.',
+        tags: ['Python', 'NLP', 'APIs' ,'PySpark', 'Análise de Dados', 'Visualização'],
+        component: 'CovidMisinfoDetectorProject',
+        github: CONTACT_LINKS.GITHUB + '/covid-misinfo-detector',
+        tech: ['Python', 'PySpark', 'scikit-learn', 'NLTK', 'Pandas', 'Folium', 'Plotly', 'Jupyter', 'Google Fact Check API']
+    },
+    {
         id: 'twitch-data-pipeline',
         title: '🎮 Twitch Data Pipeline',
         shortDesc: 'Pipeline de dados end-to-end para coleta, processamento e análise de métricas dos principais canais da Twitch.',
-        tags: ['Python', 'ETL', 'Data Pipeline', 'Airflow'],
+        tags: ['Python', 'Data Pipeline', 'Airflow'],
         component: 'TwitchDataPipelineProject',
         github: CONTACT_LINKS.GITHUB + '/data-pipeline-twitch',
         tech: ['Python', 'Apache Airflow', 'PostgreSQL', 'Pandas', 'Psycopg2', 'Jupyter', 'Kaggle API']
@@ -41,7 +50,7 @@ const PROJECTS_DATA = [
         id: 'api-ibge',
         title: '🇧🇷 API IBGE Data Pipeline',
         shortDesc: 'Pipeline ETL para coleta e processamento de dados da API do IBGE. Integração com MySQL e automação de tarefas.',
-        tags: ['Python', 'ETL', 'APIs', 'SQL'],
+        tags: ['Python', 'Data Pipeline', 'APIs', 'SQL'],
         component: 'ApiIbgeProject',
         github: CONTACT_LINKS.GITHUB + '/API-Ibge',
         tech: ['Python', 'SQLAlchemy', 'MySQL', 'Pandas', 'NumPy', 'Requests', 'PyMySQL']
