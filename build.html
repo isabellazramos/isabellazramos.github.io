@@ -46,7 +46,7 @@
         const { useState, useEffect, useRef, Fragment } = React;
 
         // ==================== LOAD MODULES ====================
-        
+
         async function loadAllModules() {
             const modules = [
                 'js/components/Header.js',
@@ -66,14 +66,25 @@
                 modules.map(url => fetch(url).then(r => r.text()))
             );
 
+            // Transpilar JSX e executar no escopo global (window)
             const fullCode = loadedCode.join('\n\n');
-            eval(Babel.transform(fullCode, { presets: ['react'] }).code);
+            const transpiledCode = Babel.transform(fullCode, { presets: ['react'] }).code;
+            // Executa no escopo global para que os componentes fiquem acessíveis via window
+            const globalEval = new Function(transpiledCode);
+            globalEval();
+
+            // Pegar componentes do escopo global
+            const Header = window.Header;
+            const Footer = window.Footer;
+            const HomePage = window.HomePage;
+            const ProjectsPage = window.ProjectsPage;
+            const ProjectDetail = window.ProjectDetail;
 
             // App Component
             function App() {
                 const [currentPage, setCurrentPage] = useState(PAGES.HOME);
                 const [selectedProject, setSelectedProject] = useState(null);
-                const currentPageRef = useRef(currentPage);
+                const currentPageRef = useRef(PAGES.HOME);
 
                 useEffect(() => {
                     currentPageRef.current = currentPage;
@@ -94,9 +105,9 @@
                         case PAGES.HOME:
                             return React.createElement(HomePage);
                         case PAGES.PROJECTS:
-                            return React.createElement(ProjectsPage, { 
-                                setCurrentPage, 
-                                setSelectedProject 
+                            return React.createElement(ProjectsPage, {
+                                setCurrentPage,
+                                setSelectedProject
                             });
                         case PAGES.PROJECT_DETAIL:
                             return selectedProject ? React.createElement(ProjectDetail, { project: selectedProject }) : null;

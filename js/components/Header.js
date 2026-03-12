@@ -1,6 +1,6 @@
 // ==================== HEADER COMPONENT ====================
 
-function NavigationLink({ item, currentPage, setCurrentPage }) {
+window.NavigationLink = function NavigationLink({ item, currentPage, setCurrentPage }) {
     const handleClick = (e) => {
         if (item.action) {
             e.preventDefault();
@@ -33,9 +33,9 @@ function NavigationLink({ item, currentPage, setCurrentPage }) {
             {item.label}
         </a>
     );
-}
+};
 
-function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
+window.MobileMenu = function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
     if (!isOpen) return null;
     const handleItemClick = (item) => {
         if (item.action) {
@@ -71,11 +71,13 @@ function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
             </ul>
         </div>
     );
-}
+};
 
-function Header({ currentPage, setCurrentPage, onBack }) {
+window.Header = function Header({ currentPage, setCurrentPage, onBack }) {
     const [scrolled, setScrolled] = React.useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+    const NavigationLink = window.NavigationLink;
+    const MobileMenu = window.MobileMenu;
 
     React.useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -142,4 +144,4 @@ function Header({ currentPage, setCurrentPage, onBack }) {
             </nav>
         </header>
     );
-}
+};
