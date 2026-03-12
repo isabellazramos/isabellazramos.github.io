@@ -1,6 +1,6 @@
 // ==================== HEADER COMPONENT ====================
 
-window.NavigationLink = function NavigationLink({ item, currentPage, setCurrentPage }) {
+function NavigationLink({ item, currentPage, setCurrentPage }) {
     const handleClick = (e) => {
         if (item.action) {
             e.preventDefault();
@@ -8,8 +8,8 @@ window.NavigationLink = function NavigationLink({ item, currentPage, setCurrentP
             window.scrollTo(0, 0);
         } else if (item.href && item.href.startsWith('#')) {
             e.preventDefault();
-            if (currentPage !== PAGES.HOME) {
-                setCurrentPage(PAGES.HOME);
+            if (currentPage !== 'home') {
+                setCurrentPage('home');
                 setTimeout(() => {
                     const element = document.querySelector(item.href);
                     if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -33,17 +33,17 @@ window.NavigationLink = function NavigationLink({ item, currentPage, setCurrentP
             {item.label}
         </a>
     );
-};
+}
 
-window.MobileMenu = function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
+function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
     if (!isOpen) return null;
     const handleItemClick = (item) => {
         if (item.action) {
             setCurrentPage(item.action);
             window.scrollTo(0, 0);
         } else if (item.href && item.href.startsWith('#')) {
-            if (currentPage !== PAGES.HOME) {
-                setCurrentPage(PAGES.HOME);
+            if (currentPage !== 'home') {
+                setCurrentPage('home');
                 setTimeout(() => {
                     const element = document.querySelector(item.href);
                     if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -71,13 +71,11 @@ window.MobileMenu = function MobileMenu({ isOpen, onClose, items, currentPage, s
             </ul>
         </div>
     );
-};
+}
 
-window.Header = function Header({ currentPage, setCurrentPage, onBack }) {
+function Header({ currentPage, setCurrentPage }) {
     const [scrolled, setScrolled] = React.useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-    const NavigationLink = window.NavigationLink;
-    const MobileMenu = window.MobileMenu;
 
     React.useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -89,17 +87,26 @@ window.Header = function Header({ currentPage, setCurrentPage, onBack }) {
         scrolled ? 'bg-zinc-950/95 backdrop-blur-md border-b border-emerald-500/20' : 'bg-transparent'
     }`;
 
+    const handleBack = () => {
+        if (currentPage === 'project-detail') {
+            setCurrentPage('projects');
+        } else {
+            setCurrentPage('home');
+        }
+        window.scrollTo(0, 0);
+    };
+
     return (
         <header className={headerClasses}>
             <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
                 <button
-                    onClick={() => { setCurrentPage(PAGES.HOME); window.scrollTo(0, 0); }}
+                    onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}
                     className="text-xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent hover:from-emerald-400 hover:to-teal-400 transition-all"
                 >
                     Isabella Ramos
                 </button>
 
-                {currentPage === PAGES.HOME ? (
+                {currentPage === 'home' ? (
                     <>
                         <ul className="hidden md:flex gap-8">
                             {NAVIGATION_ITEMS.map((item, idx) => (
@@ -135,7 +142,7 @@ window.Header = function Header({ currentPage, setCurrentPage, onBack }) {
                     </>
                 ) : (
                     <button
-                        onClick={onBack}
+                        onClick={handleBack}
                         className="text-gray-400 hover:text-emerald-500 transition-colors flex items-center gap-2"
                     >
                         ← Voltar
@@ -144,4 +151,4 @@ window.Header = function Header({ currentPage, setCurrentPage, onBack }) {
             </nav>
         </header>
     );
-};
+}
