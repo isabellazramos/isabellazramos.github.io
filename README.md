@@ -62,7 +62,7 @@ O conteúdo do portfólio pode ser atualizado editando os arquivos na pasta `js/
 ## 📞 Contato
 
 📧 [isabellamenezesramos@outlook.com](mailto:isabellamenezesramos@outlook.com)  
-💼 [LinkedIn](https://linkedin.com/in/isabella-ramos-03a5a2207)  
+💼 [LinkedIn](https://linkedin.com/in/isabella-menezes)  
 🐙 [GitHub](https://github.com/isabellazramos)
 
 ## 📜 Licença
