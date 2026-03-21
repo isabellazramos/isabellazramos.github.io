@@ -20,6 +20,6 @@ const NAVIGATION_ITEMS = [
     { label: 'Habilidades', href: '#skills' },
     { label: 'Certificados', action: PAGES.CERTIFICATIONS },
     { label: 'Projetos', action: PAGES.PROJECTS },
-    { label: 'Currículo', href: CONTACT_LINKS.RESUME, external: true },
-    { label: 'Contato', href: '#contato' }
+    { label: 'Contato', href: '#contato' },
+    { label: 'Currículo', href: CONTACT_LINKS.RESUME, external: true }
 ];
