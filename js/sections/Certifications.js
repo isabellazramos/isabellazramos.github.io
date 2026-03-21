@@ -18,7 +18,9 @@ function CertificationCard({ certification }) {
 function Certifications() {
     const { useState } = React;
     const [filter, setFilter] = useState('Todas');
-    const categories = ['Todas', 'Big Data', 'Data Engineering', 'Data Analytics', 'AI/ML', 'Cloud', 'Programming'];
+
+    // Gera as categorias dinamicamente a partir dos dados de certificações
+    const categories = ['Todas', ...Array.from(new Set(CERTIFICATIONS_DATA.map(cert => cert.category)))];
 
     const filteredCerts = filter === 'Todas' 
         ? CERTIFICATIONS_DATA 
