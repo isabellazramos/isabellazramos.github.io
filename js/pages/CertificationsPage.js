@@ -26,14 +26,13 @@ function CertificationsPage() {
         React.createElement(
             'h1',
             { className: 'text-6xl font-bold text-center mb-8 pb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent' },
-            'Certificações'
+            'Certificados'
         ),
         React.createElement(
             'p',
             { className: 'text-center text-gray-400 mb-12 text-xl max-w-3xl mx-auto' },
-            'Certificações obtidas em plataformas como DataCamp, Coursera, Alura e Google Cloud, cobrindo engenharia de dados, big data, cloud e inteligência artificial.'
+            'Certificados obtidos em plataformas como DataCamp, Coursera, Alura e Google Cloud, cobrindo engenharia de dados, big data, cloud e inteligência artificial.'
         ),
-        // Filtros
         React.createElement(
             'div',
             { className: 'max-w-6xl mx-auto mb-8' },
@@ -57,13 +56,11 @@ function CertificationsPage() {
                 )
             )
         ),
-        // Contador
         React.createElement(
             'p',
             { className: 'text-center text-gray-500 mb-8 text-sm' },
             `${filteredCerts.length} certificado${filteredCerts.length !== 1 ? 's' : ''} encontrado${filteredCerts.length !== 1 ? 's' : ''}`
         ),
-        // Grid de certificados
         React.createElement(
             'div',
             { className: 'max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4' },

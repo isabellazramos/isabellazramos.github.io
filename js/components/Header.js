@@ -6,6 +6,9 @@ function NavigationLink({ item, currentPage, setCurrentPage }) {
             e.preventDefault();
             setCurrentPage(item.action);
             window.scrollTo(0, 0);
+        } else if (item.external) {
+            // deixa o comportamento padrão do link (abre/download)
+            return;
         } else if (item.href && item.href.startsWith('#')) {
             e.preventDefault();
             if (currentPage !== 'home') {
@@ -28,6 +31,20 @@ function NavigationLink({ item, currentPage, setCurrentPage }) {
             </button>
         );
     }
+
+    if (item.external) {
+        return (
+            <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 rounded-lg transition-colors text-sm font-medium"
+            >
+                {item.label} ↓
+            </a>
+        );
+    }
+
     return (
         <a href={item.href} onClick={handleClick} className="text-gray-400 hover:text-emerald-500 transition-colors">
             {item.label}
@@ -41,6 +58,8 @@ function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
         if (item.action) {
             setCurrentPage(item.action);
             window.scrollTo(0, 0);
+        } else if (item.external) {
+            window.open(item.href, '_blank');
         } else if (item.href && item.href.startsWith('#')) {
             if (currentPage !== 'home') {
                 setCurrentPage('home');
@@ -64,7 +83,7 @@ function MobileMenu({ isOpen, onClose, items, currentPage, setCurrentPage }) {
                             onClick={() => handleItemClick(item)}
                             className="block w-full text-left px-6 py-3 text-gray-400 hover:text-emerald-500 hover:bg-zinc-900/50 transition-colors"
                         >
-                            {item.label}
+                            {item.label}{item.external ? ' ↓' : ''}
                         </button>
                     </li>
                 ))}
@@ -108,7 +127,7 @@ function Header({ currentPage, setCurrentPage }) {
 
                 {currentPage === 'home' ? (
                     <>
-                        <ul className="hidden md:flex gap-8">
+                        <ul className="hidden md:flex gap-8 items-center">
                             {NAVIGATION_ITEMS.map((item, idx) => (
                                 <li key={idx}>
                                     <NavigationLink
