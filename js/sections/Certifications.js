@@ -46,9 +46,9 @@ function Certifications() {
 
     return (
         <section id="certificacoes" className="py-20 px-6">
-            <h2 className="text-5xl font-bold text-center mb-8 pb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold text-center mb-8 pb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
                 Certificações
-            </h2>
+            </h1>
 
             <div className="flex justify-center gap-3 mb-12 flex-wrap">
                 {categories.map(cat => (
