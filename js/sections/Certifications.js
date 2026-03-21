@@ -1,4 +1,5 @@
 // ==================== CERTIFICATIONS SECTION ====================
+// Componente de card reutilizado pela CertificationsPage
 
 function CertificationCard({ certification }) {
     const certCategories = certification.categories || [certification.category];
@@ -21,56 +22,5 @@ function CertificationCard({ certification }) {
                 ))}
             </div>
         </div>
-    );
-}
-
-function Certifications() {
-    const { useState } = React;
-    const [filter, setFilter] = useState('Todas');
-
-    const allCategories = Array.from(
-        new Set(
-            CERTIFICATIONS_DATA.flatMap(cert => cert.categories || [cert.category])
-        )
-    );
-
-    const categories = ['Todas', ...allCategories];
-
-    const filteredCerts =
-        filter === 'Todas'
-            ? CERTIFICATIONS_DATA
-            : CERTIFICATIONS_DATA.filter(cert => {
-                  const certCategories = cert.categories || [cert.category];
-                  return certCategories.includes(filter);
-              });
-
-    return (
-        <section id="certificacoes" className="py-20 px-6">
-            <h1 className="text-5xl font-bold text-center mb-8 pb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
-                Certificações
-            </h1>
-
-            <div className="flex justify-center gap-3 mb-12 flex-wrap">
-                {categories.map(cat => (
-                    <button
-                        key={cat}
-                        onClick={() => setFilter(cat)}
-                        className={`filter-btn px-4 py-2 rounded-lg border ${
-                            filter === cat
-                                ? 'active'
-                                : 'bg-zinc-800 border-zinc-700 text-gray-400 hover:border-emerald-500'
-                        }`}
-                    >
-                        {cat}
-                    </button>
-                ))}
-            </div>
-
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {filteredCerts.map((cert, idx) => (
-                    <CertificationCard key={idx} certification={cert} />
-                ))}
-            </div>
-        </section>
     );
 }
