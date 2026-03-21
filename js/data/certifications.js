@@ -20,14 +20,14 @@ const CERTIFICATIONS_DATA = [
         provider: 'DataCamp',
         date: 'Dez 2025',
         category: 'Big Data',
-        categories: ['Big Data']
+        categories: ['Data Engineering', 'Big Data']
     },
     {
         title: 'Big Data Fundamentals with PySpark',
         provider: 'DataCamp',
         date: 'Jul 2025',
         category: 'Big Data',
-        categories: ['Big Data']
+        categories: ['Data Engineering', 'Big Data']
     },
     {
         title: 'Formação Apache Airflow',
@@ -42,6 +42,13 @@ const CERTIFICATIONS_DATA = [
         date: 'Nov 2024',
         category: 'AI/ML',
         categories: ['AI/ML']
+    },
+    {
+        title: 'Streaming Analytics into BigQuery',
+        provider: 'Google Cloud',
+        date: 'Mai 2024',
+        category: 'Cloud',
+        categories: ['Cloud']
     },
     {
         title: 'Build a Data Warehouse with BigQuery',
