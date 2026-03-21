@@ -1,6 +1,8 @@
 // ==================== DADOS DE CERTIFICAÇÕES ====================
 
 const CERTIFICATIONS_DATA = [
+    { title: 'Feature Engineering with PySpark', provider: 'DataCamp', date: 'Mar 2026', category: 'Data Engineering'},
+    { title: 'Google Data Analytics Professional Certificate(v.3)', provider: 'Coursera', date: 'Mar 2026', category: 'Data Analytics'},
     { title: 'Cleaning Data with PySpark', provider: 'DataCamp', date: 'Dez 2025', category: 'Big Data' },
     { title: 'Big Data Fundamentals with PySpark', provider: 'DataCamp', date: 'Jul 2025', category: 'Big Data' },
     { title: 'Formação Apache Airflow', provider: 'Alura', date: 'Mar 2025', category: 'Data Engineering' },

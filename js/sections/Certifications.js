@@ -18,7 +18,7 @@ function CertificationCard({ certification }) {
 function Certifications() {
     const { useState } = React;
     const [filter, setFilter] = useState('Todas');
-    const categories = ['Todas', 'Big Data', 'Data Engineering', 'AI/ML', 'Cloud', 'Programming'];
+    const categories = ['Todas', 'Big Data', 'Data Engineering', 'Data Analytics', 'AI/ML', 'Cloud', 'Programming'];
 
     const filteredCerts = filter === 'Todas' 
         ? CERTIFICATIONS_DATA 
