@@ -17,9 +17,10 @@ function App() {
         if (!selectedProject || !selectedProject.component) {
           return null;
         }
-        // Renderiza o componente específico do projeto
         const ProjectComponent = window[selectedProject.component];
         return ProjectComponent ? React.createElement(ProjectComponent) : null;
+      case PAGES.CERTIFICATIONS:
+        return React.createElement(CertificationsPage);
       default:
         return null;
     }

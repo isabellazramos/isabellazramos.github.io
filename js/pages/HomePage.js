@@ -5,7 +5,6 @@ function HomePage() {
         React.createElement(Hero),
         React.createElement(About),
         React.createElement(Experience),
-        React.createElement(Certifications),
         React.createElement(Skills),
         React.createElement(Contact)
     );

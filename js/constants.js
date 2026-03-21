@@ -3,7 +3,8 @@
 const PAGES = {
     HOME: 'home',
     PROJECTS: 'projects',
-    PROJECT_DETAIL: 'project-detail'
+    PROJECT_DETAIL: 'project-detail',
+    CERTIFICATIONS: 'certifications'
 };
 
 const CONTACT_LINKS = {
@@ -15,8 +16,8 @@ const CONTACT_LINKS = {
 const NAVIGATION_ITEMS = [
     { label: 'Sobre', href: '#sobre' },
     { label: 'Experiência', href: '#experiencia' },
-    { label: 'Certificados', href: '#certificacoes' },
     { label: 'Habilidades', href: '#skills' },
-    { label: 'Projetos', action: 'projects' },
+    { label: 'Certificados', action: PAGES.CERTIFICATIONS },
+    { label: 'Projetos', action: PAGES.PROJECTS },
     { label: 'Contato', href: '#contato' }
 ];
