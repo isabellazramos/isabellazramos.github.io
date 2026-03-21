@@ -29,7 +29,6 @@ function ProjectCard({ project, onClick }) {
 function ProjectsPage({ setCurrentPage, setSelectedProject }) {
     const [selectedTag, setSelectedTag] = React.useState('Todos');
 
-    // Extraír todas as tags únicas dos projetos
     const allTags = React.useMemo(() => {
         const tagsSet = new Set();
         PROJECTS_DATA.forEach(project => {
@@ -38,7 +37,6 @@ function ProjectsPage({ setCurrentPage, setSelectedProject }) {
         return ['Todos', ...Array.from(tagsSet).sort()];
     }, []);
 
-    // Filtrar projetos pela tag selecionada
     const filteredProjects = React.useMemo(() => {
         if (selectedTag === 'Todos') {
             return PROJECTS_DATA;
@@ -57,7 +55,7 @@ function ProjectsPage({ setCurrentPage, setSelectedProject }) {
         { className: 'pt-32 pb-20 px-6 fade-in' },
         React.createElement(
             'h1',
-            { className: 'text-6xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent' },
+            { className: 'text-6xl font-bold text-center mb-8 pb-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent' },
             'Meus Projetos'
         ),
         React.createElement(
@@ -65,7 +63,6 @@ function ProjectsPage({ setCurrentPage, setSelectedProject }) {
             { className: 'text-center text-gray-400 mb-12 text-xl max-w-3xl mx-auto' },
             'Portfólio completo de projetos de engenharia de dados. Clique em qualquer projeto para ver os detalhes técnicos, desafios e resultados.'
         ),
-        // Barra de filtros por tag
         React.createElement(
             'div',
             { className: 'max-w-6xl mx-auto mb-12' },
@@ -89,13 +86,11 @@ function ProjectsPage({ setCurrentPage, setSelectedProject }) {
                 )
             )
         ),
-        // Contador de projetos filtrados
         React.createElement(
             'p',
             { className: 'text-center text-gray-500 mb-8 text-sm' },
             `${filteredProjects.length} projeto${filteredProjects.length !== 1 ? 's' : ''} encontrado${filteredProjects.length !== 1 ? 's' : ''}`
         ),
-        // Grid de projetos
         React.createElement(
             'div',
             { className: 'max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' },
