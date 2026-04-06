@@ -23,11 +23,32 @@ const CERTIFICATIONS_DATA = [
         categories: ['Data Engineering', 'Big Data']
     },
     {
+        title: 'Técnicas de Resolução de Problemas',
+        provider: 'Linkedin Learning',
+        date: 'Ago 2025',
+        category: 'Soft Skills',
+        categories: ['Soft Skills']
+    },
+    {
+        title: 'Fundamentos da Criatividade: Como Gerar Ideias Valiosas e Inovar na Prática ',
+        provider: 'Linkedin Learning',
+        date: 'Jul 2025',
+        category: 'Soft Skills',
+        categories: ['Soft Skills']
+    },
+    {
         title: 'Big Data Fundamentals with PySpark',
         provider: 'DataCamp',
         date: 'Jul 2025',
         category: 'Big Data',
         categories: ['Data Engineering', 'Big Data']
+    },
+    {
+        title: 'Fundamentos de Comunicação',
+        provider: 'Linkedin Learning',
+        date: 'Jun 2025',
+        category: 'Soft Skills',
+        categories: ['Soft Skills']
     },
     {
         title: 'Formação Apache Airflow',
