@@ -1,7 +1,7 @@
 // ==================== FEMINICIDIOS BRASIL PIPELINE ====================
 
 
-function FeminicidiosBrasilPipeline() {
+function FeminicidiosBrasilPipelineProject() {
     const project = {
         title: '📊 Pipeline de Análise de Feminicídios no Brasil',
         tech: ['Python', 'GCP', 'BigQuery', 'Cloud Storage', 'dbt', 'Data Studio', 'Cloud Function' ,'ELT' ],
