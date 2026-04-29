@@ -2,6 +2,15 @@
 
 const PROJECTS_DATA = [
     {
+        id: 'feminicidios-brasil-pipeline',
+        title: '📊 Pipeline de Análise de Feminicídios no Brasil',
+        shortDesc: 'Pipeline de dados completo para coleta, processamento e visualização de dados de feminicídios no Brasil, utilizando dados públicos do SINESP.',
+        tags: ['Python', 'GCP', 'BigQuery', 'Cloud Storage', 'Cloud Function', 'dbt', 'Visualização', 'ELT', 'Data Pipeline' ],
+        component: 'FeminicidiosBrasilPipeline',
+        github: CONTACT_LINKS.GITHUB + '/feminicidios-brasil-pipeline',
+        tech: ['Python', 'GCP', 'BigQuery', 'Cloud Storage', 'Cloud Function', 'dbt', 'Data Studio', 'ELT' ]
+    },
+    {
         id: 'covid-misinfo-detector',
         title: '🔍 Detecção de Fake News COVID-19',
         shortDesc: 'Pipeline end-to-end de detecção automática de desinformação sobre COVID-19 em ~93.000 mensagens de grupos públicos do WhatsApp, combinando NLP, dados de fact-checkers e análise geoespacial.',

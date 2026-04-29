@@ -32,7 +32,7 @@ function CovidMisinfoDetectorProject() {
             'Mapas coropléticos revelaram correlação geográfica entre volume de fake news por UF, cobertura vacinal e mortalidade COVID-19',
             'Análise temporal evidenciou picos de desinformação associados ao calendário eleitoral de 2022'
         ],
-        github: 'https://github.com/isabellazramos/covid-misinfo-detector'
+        github: CONTACT_LINKS.GITHUB + '/covid-misinfo-detector'
     };
 
 
