@@ -42,7 +42,7 @@
     }
     </script>
 
-    <!-- React e Tailwind via CDN -->
+    <!-- React 18 via CDN -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -62,31 +62,57 @@
     <script src="js/data/skills.js"></script>
     <script src="js/data/experiences.js"></script>
 
-    <!-- Componentes e páginas (carregados via Babel como data-type=module) -->
-    <script type="text/babel" data-presets="react" src="js/components/Header.js"></script>
-    <script type="text/babel" data-presets="react" src="js/components/Footer.js"></script>
-    <script type="text/babel" data-presets="react" src="js/components/ProjectDetailTemplate.js"></script>
+    <!-- Carregamento dos componentes React via fetch+eval (compatível com Babel standalone) -->
+    <script type="text/babel">
+        async function loadAllModules() {
+            const modules = [
+                'js/components/Header.js',
+                'js/components/Footer.js',
+                'js/components/ProjectDetailTemplate.js',
+                'js/sections/Hero.js',
+                'js/sections/About.js',
+                'js/sections/Skills.js',
+                'js/sections/Experience.js',
+                'js/sections/Certifications.js',
+                'js/sections/Contact.js',
+                'js/pages/HomePage.js',
+                'js/pages/ProjectsPage.js',
+                'js/pages/CertificationsPage.js',
+                'js/projects/FeminicidiosBrasilPipelineProject.js',
+                'js/projects/CovidMisinfoDetectorProject.js',
+                'js/projects/SaudePublicaProject.js',
+                'js/projects/PopulacaoRuaBHProject.js',
+                'js/projects/LeidenRankingAnalysisProject.js',
+                'js/projects/HandsetsCensusProject.js',
+                'js/projects/TwitchDataPipelineProject.js',
+                'js/projects/ApiIbgeProject.js',
+                'js/app.js'
+            ];
 
-    <script type="text/babel" data-presets="react" src="js/sections/Hero.js"></script>
-    <script type="text/babel" data-presets="react" src="js/sections/About.js"></script>
-    <script type="text/babel" data-presets="react" src="js/sections/Skills.js"></script>
-    <script type="text/babel" data-presets="react" src="js/sections/Experience.js"></script>
-    <script type="text/babel" data-presets="react" src="js/sections/Certifications.js"></script>
-    <script type="text/babel" data-presets="react" src="js/sections/Contact.js"></script>
+            try {
+                const loadedCode = await Promise.all(
+                    modules.map(url =>
+                        fetch(url).then(r => {
+                            if (!r.ok) throw new Error('Falha ao carregar ' + url + ': ' + r.status);
+                            return r.text();
+                        })
+                    )
+                );
 
-    <script type="text/babel" data-presets="react" src="js/pages/HomePage.js"></script>
-    <script type="text/babel" data-presets="react" src="js/pages/ProjectsPage.js"></script>
-    <script type="text/babel" data-presets="react" src="js/pages/CertificationsPage.js"></script>
+                const fullCode = loadedCode.join('\n\n');
+                eval(Babel.transform(fullCode, { presets: ['react'] }).code);
+            } catch (err) {
+                console.error('Erro ao carregar módulos:', err);
+                document.getElementById('root').innerHTML =
+                    '<div style="color:#f87171;padding:2rem;font-family:monospace">Erro ao carregar o portfólio: ' + err.message + '</div>';
+            }
+        }
 
-    <script type="text/babel" data-presets="react" src="js/projects/FeminicidiosBrasilPipelineProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/CovidMisinfoDetectorProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/SaudePublicaProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/PopulacaoRuaBHProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/LeidenRankingAnalysisProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/HandsetsCensusProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/TwitchDataPipelineProject.js"></script>
-    <script type="text/babel" data-presets="react" src="js/projects/ApiIbgeProject.js"></script>
-
-    <script type="text/babel" data-presets="react" src="js/app.js"></script>
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadAllModules);
+        } else {
+            loadAllModules();
+        }
+    </script>
 </body>
 </html>
