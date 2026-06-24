@@ -67,7 +67,11 @@
             );
 
             const fullCode = loadedCode.join('\n\n');
-            eval(fullCode);
+            const transformed = Babel.transform(fullCode, {
+                presets: [['react', { runtime: 'classic' }]],
+                sourceType: 'script'
+            }).code;
+            eval(transformed);
 
             // App Component
             function App() {
