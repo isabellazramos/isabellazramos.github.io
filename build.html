@@ -6,10 +6,9 @@
     <title>Isabella Ramos | Engenheira de Dados</title>
     <meta name="description" content="Portfólio de Isabella Ramos - Engenheira de Dados especializada em pipelines escaláveis, dbt, Apache Airflow e BigQuery">
     
-    <!-- React & Babel -->
+    <!-- React -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,7 +41,7 @@
     <script src="js/data/experiences.js"></script>
 
     <!-- Script principal com todo o código React -->
-    <script type="text/babel">
+    <script>
         const { useState, useEffect, useRef, Fragment } = React;
 
         // ==================== LOAD MODULES ====================
@@ -67,11 +66,7 @@
             );
 
             const fullCode = loadedCode.join('\n\n');
-            const transformed = Babel.transform(fullCode, {
-                presets: [['react', { runtime: 'classic' }]],
-                sourceType: 'script'
-            }).code;
-            eval(transformed);
+            eval(fullCode);
 
             // App Component
             function App() {

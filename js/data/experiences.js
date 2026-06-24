@@ -15,7 +15,7 @@ const EXPERIENCES_DATA = [
         ]
     },
     {
-        title: 'Engenheira de Dados Jr. / Estagiária',
+        title: 'Engenheira de Dados / Estagiária',
         company: 'ammo.varejo',
         location: 'Remoto',
         period: 'Jun 2022 – Dez 2023',
