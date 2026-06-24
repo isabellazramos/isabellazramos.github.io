@@ -62,7 +62,7 @@
     <script src="js/data/skills.js"></script>
     <script src="js/data/experiences.js"></script>
 
-    <!-- Carregamento dos componentes React via fetch+eval (compatível com Babel standalone) -->
+    <!-- Carregamento dos componentes React via fetch+eval -->
     <script type="text/babel">
         async function loadAllModules() {
             const modules = [
@@ -90,7 +90,7 @@
             ];
 
             try {
-                const loadedCode = await Promise.all(
+                const responses = await Promise.all(
                     modules.map(url =>
                         fetch(url).then(r => {
                             if (!r.ok) throw new Error('Falha ao carregar ' + url + ': ' + r.status);
@@ -99,12 +99,20 @@
                     )
                 );
 
-                const fullCode = loadedCode.join('\n\n');
-                eval(Babel.transform(fullCode, { presets: ['react'] }).code);
+                const fullCode = responses.join('\n\n');
+
+                // sourceType: 'script' evita que o Babel trate o código como ES module,
+                // o que causaria "Cannot use import statement outside a module" no eval()
+                const transformed = Babel.transform(fullCode, {
+                    presets: ['react'],
+                    sourceType: 'script'
+                }).code;
+
+                eval(transformed);
             } catch (err) {
                 console.error('Erro ao carregar módulos:', err);
                 document.getElementById('root').innerHTML =
-                    '<div style="color:#f87171;padding:2rem;font-family:monospace">Erro ao carregar o portfólio: ' + err.message + '</div>';
+                    '<div style="color:#f87171;padding:2rem;font-family:monospace">Erro: ' + err.message + '</div>';
             }
         }
 
